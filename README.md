@@ -1,10 +1,10 @@
 # How to create and run MPI projects in CLion
 
-* Download and install MPI from [Microsoft Website](https://www.microsoft.com/en-us/download/details.aspx?id=100593). You need to download both `msmpisetup.exe` and `msmpisdk.msi`.
+1. Download and install MPI from [Microsoft Website](https://www.microsoft.com/en-us/download/details.aspx?id=100593). You need to download both `msmpisetup.exe` and `msmpisdk.msi`.
 
 > Note that you shouldn't have spacec or cyrillic characters in path to MPI installation.
 
-1. Open Windows Terminal and try running `mpiexec`:
+2. Open Windows Terminal and try running `mpiexec`:
 
 ```bash
 Microsoft MPI Startup Program [Version 10.1.12498.18]
@@ -29,9 +29,9 @@ And `path_to_mpi\Bin\` path is added to `Path` variable.
 > `path_to_mpi` is a path to your Microsoft MPI installation.
 
 
-2. Open CLion and create new `C++ Executable` Project.
+3. Open CLion and create new `C++ Executable` Project.
 
-3. Open `CMakeLists.txt` where you should see something like this: (`MY_PROJECT` is project name)
+4. Open `CMakeLists.txt` where you should see something like this: (`MY_PROJECT` is project name)
 
 ```cmake
 cmake_minimum_required(VERSION 3.20)
@@ -43,7 +43,7 @@ add_executable(MY_PROJECT main.cpp)
 
 ```
 
-4. Add MPI Package and MPI Library to project
+5. Add MPI Package and MPI Library to project
 
 ```cmake
 cmake_minimum_required(VERSION 3.20)
@@ -59,7 +59,7 @@ add_executable(MY_PROJECT main.cpp)
 target_link_libraries(MY_PROJECT PUBLIC MPI::MPI_CXX)
 ```
 
-5. Add following run configurations:
+6. Add following run configurations:
 
 **1) CMake Application**
 
@@ -86,7 +86,7 @@ target_link_libraries(MY_PROJECT PUBLIC MPI::MPI_CXX)
 
 > `MY_PROJECT` is a name of `.exe` file in `./cmake-build-debug` folder.
 
-6. Add folling code to `main.cpp`:
+7. Add folling code to `main.cpp`:
 
 ```cpp
 #include <mpi.h>
@@ -118,4 +118,8 @@ int main(int argc, char** argv) {
 }
 ```
 
-7. Run `Compile` configuration before executing any of `X Cores` configurations.
+8. Setup CMake "Release" configuration. Go to `Settings` -> `Build, Execution, Deployment` -> `CMake`. Click on "Plus" sign and a new "Release" configuration should be created. Click on "OK" or "Apply".
+
+9. Select "Release" under "Configurations" dropdown.
+
+10. Run `Compile` configuration before executing any of `X Cores` configurations.
