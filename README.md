@@ -123,3 +123,6 @@ int main(int argc, char** argv) {
 9. Select "Release" under "Configurations" dropdown.
 
 10. Run `Compile` configuration before executing any of `X Cores` configurations.
+
+> If you are getting an error "Cannot start process, the working directory '../cmake-build-release' does not exist" then RMC on your project folder and select "Reload CMake Project".
+
